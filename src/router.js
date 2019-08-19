@@ -13,6 +13,9 @@ export default new Router({
       name: 'home',
       component: Home
     },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 58a5e16e2a4d578bc46286af14effe08cb60b174
   ]
 })
