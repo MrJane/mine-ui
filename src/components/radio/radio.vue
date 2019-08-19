@@ -1,45 +1,10 @@
 <template>
-    <label
-            class="el-radio"
-            :class="[
-      border && radioSize ? 'el-radio--' + radioSize : '',
-      { 'is-disabled': isDisabled },
-      { 'is-focus': focus },
-      { 'is-bordered': border },
-      { 'is-checked': model === label }
-    ]"
-            role="radio"
-            :aria-checked="model === label"
-            :aria-disabled="isDisabled"
-            :tabindex="tabIndex"
-            @keydown.space.stop.prevent="model = isDisabled ? model : label"
-    >
-    <span class="el-radio__input"
-          :class="{
-        'is-disabled': isDisabled,
-        'is-checked': model === label
-      }"
-    >
-      <span class="el-radio__inner"></span>
-      <input
-              ref="radio"
-              class="el-radio__original"
-              :value="label"
-              type="radio"
-              aria-hidden="true"
-              v-model="model"
-              @focus="focus = true"
-              @blur="focus = false"
-              @change="handleChange"
-              :name="name"
-              :disabled="isDisabled"
-              tabindex="-1"
-      >
-    </span>
-        <span class="el-radio__label" @keydown.stop>
-      <slot></slot>
-      <template v-if="!$slots.default">{{label}}</template>
-    </span>
+    <label class="mine-radio-wrap">
+        <span class="mine-radio mine-radio-checked">
+            <span class="mine-radio-inner"></span>
+            <input type="radio" class="mine-radio-input">
+        </span>
+        <slot>{{ label }}</slot>
     </label>
 </template>
 
@@ -48,35 +13,27 @@
     name: 'mine-radio',
     props: {
       value: {},
-      label: {},
+      label: {
+        type: String,
+        default: 'ddd'
+      },
       disabled: Boolean,
       name: String,
       border: Boolean,
       size: String
     },
-    data() {
+    data () {
       return {
         focus: false
       };
     },
     computed: {
-      isGroup() {
-        let parent = this.$parent;
-        while (parent) {
-          if (parent.$options.componentName !== 'ElRadioGroup') {
-            parent = parent.$parent;
-          } else {
-            this._radioGroup = parent;
-            return true;
-          }
-        }
-        return false;
-      },
+
       model: {
-        get() {
+        get () {
           return this.isGroup ? this._radioGroup.value : this.value;
         },
-        set(val) {
+        set (val) {
           if (this.isGroup) {
             this.dispatch('ElRadioGroup', 'input', [val]);
           } else {
@@ -85,26 +42,26 @@
           this.$refs.radio && (this.$refs.radio.checked = this.model === this.label);
         }
       },
-      _elFormItemSize() {
+      _elFormItemSize () {
         return (this.elFormItem || {}).elFormItemSize;
       },
-      radioSize() {
+      radioSize () {
         const temRadioSize = this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
         return this.isGroup
           ? this._radioGroup.radioGroupSize || temRadioSize
           : temRadioSize;
       },
-      isDisabled() {
+      isDisabled () {
         return this.isGroup
           ? this._radioGroup.disabled || this.disabled || (this.elForm || {}).disabled
           : this.disabled || (this.elForm || {}).disabled;
       },
-      tabIndex() {
+      tabIndex () {
         return (this.isDisabled || (this.isGroup && this.model !== this.label)) ? -1 : 0;
       }
     },
     methods: {
-      handleChange() {
+      handleChange () {
         this.$nextTick(() => {
           this.$emit('change', this.model);
           this.isGroup && this.dispatch('ElRadioGroup', 'handleChange', this.model);
@@ -114,6 +71,82 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss">
+    .mine-radio-wrap {
+        font-size: 12px;
+        vertical-align: middle;
+        display: inline-block;
+        position: relative;
+        white-space: nowrap;
+        margin-right: 8px;
+        cursor: pointer;
+        * {
+            box-sizing: border-box;
+        }
+        .mine-radio {
+            display: inline-block;
+            margin-right: 4px;
+            white-space: nowrap;
+            position: relative;
+            line-height: 1;
+            vertical-align: middle;
+            cursor: pointer;
 
+            &.mine-radio-checked {
+                .mine-radio-inner {
+                    border-color: #2d8cf0;
+
+                    &:after {
+                        opacity: 1;
+                        transform: scale(1);
+                        transition: all .2s ease-in-out;
+                    }
+                }
+            }
+
+            .mine-radio-inner {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                position: relative;
+                top: 0;
+                left: 0;
+                background-color: #fff;
+                border: 1px solid #dcdee2;
+                border-radius: 50%;
+                transition: all .2s ease-in-out;
+
+                &:after {
+                    position: absolute;
+                    width: 8px;
+                    height: 8px;
+                    left: 2px;
+                    top: 2px;
+                    border-radius: 6px;
+                    display: table;
+                    border-top: 0;
+                    border-left: 0;
+                    content: " ";
+                    background-color: #2d8cf0;
+                    opacity: 0;
+                    transition: all .2s ease-in-out;
+                    -webkit-transform: scale(0);
+                    transform: scale(0);
+                }
+
+
+            }
+
+            .mine-radio-input {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 1;
+                opacity: 0;
+                cursor: pointer;
+            }
+        }
+    }
 </style>
