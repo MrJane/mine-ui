@@ -1,0 +1,26 @@
+.mine-row {
+  position: relative;
+  display: flex;
+  margin-left: 0;
+  margin-right: 0;
+  height: auto;
+  zoom: 1;
+  width: 100%;
+//border: 1px solid gold;
+  .mine-col {
+    border: 1px solid red;
+    box-sizing: border-box;
+    $class: mine-col-;
+    @for $n from 1 through 24 {
+      &.#{$class}#{$n} {
+        width: ($n/24)*100%;
+      }
+    }
+    $offset:mine-offset-;
+    @for $n from 1 through 24 {
+      &.#{$offset}#{$n} {
+        margin-left: ($n/24)*100%;
+      }
+    }
+  }
+}
