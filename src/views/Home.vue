@@ -65,7 +65,27 @@
             <mine-switch checked="true">ddd</mine-switch>
         </mine-card>
         <mine-card class="box-card">
-           <mine-badge></mine-badge>
+            <mine-badge></mine-badge>
+        </mine-card>
+        <mine-card class="box-card">
+            <mine-steps direction="horizontal">
+                <mine-step title="进行中"></mine-step>
+                <mine-step title="待进行"></mine-step>
+                <mine-step title="待进行"></mine-step>
+            </mine-steps>
+        </mine-card>
+        <mine-card :bodyStyle="{width:'600px'}" class="box-card">
+            <mine-steps direction="vertical">
+                <mine-step title="进行中" content="这里是该步骤的描述信"></mine-step>
+                <mine-step title="待进行" content="这里是该步骤的描述信"></mine-step>
+                <mine-step title="待进行" content="这里是该步骤的描述信"></mine-step>
+            </mine-steps>
+        </mine-card>
+        <mine-card :bodyStyle="{width:'600px'}" class="box-card">
+            <mine-progress :percent="25"></mine-progress>
+            <mine-progress :percent="50" status="active"></mine-progress>
+            <mine-progress :percent="75" status="success"></mine-progress>
+            <mine-progress :percent="75" status="wrong"></mine-progress>
         </mine-card>
         <div class="card" style="width: 240px">
             <mine-menu active-name="3">
@@ -104,6 +124,9 @@
   import MineRadio from '../components/radio/radio'
   import MineSwitch from '../components/switch/switch';
   import MineBadge from '../components/badge/badge'
+  import MineSteps from '../components/steps/steps';
+  import MineStep from '../components/steps/step';
+  import MineProgress from '../components/progress/progress'
 
   export default {
     name: 'home',
@@ -118,7 +141,10 @@
       MineRadioGroup,
       MineRadio,
       MineSwitch,
-      MineBadge
+      MineBadge,
+      MineSteps,
+      MineStep,
+      MineProgress
     }
   }
 </script>

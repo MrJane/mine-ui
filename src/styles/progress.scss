@@ -1,0 +1,49 @@
+.mine-progress {
+  display: inline-block;
+  width: 100%;
+  font-size: 12px;
+  position: relative;
+
+  &.mine-progress-success {
+    .mine-progress-outer{
+      .mine-progress-inner{
+        .mine-progress-bg{
+          background-color: #67c23a;
+        }
+      }
+    }
+  }
+  &.mine-progress-wrong{
+    .mine-progress-outer{
+      .mine-progress-inner{
+        .mine-progress-bg{
+          background-color: red;
+        }
+      }
+    }
+  }
+
+  .mine-progress-outer {
+    padding-right: 55px;
+    .mine-progress-inner {
+      display: inline-block;
+      width: 100%;
+      background-color: #f3f3f3;
+      border-radius: 100px;
+      vertical-align: middle;
+      position: relative;
+      .mine-progress-bg {
+        //width: 25%;
+        height: 10px;
+        background-color: #2d8cf0;
+        position: relative;
+        border-radius: 100px;
+        transition: all .2s linear;
+      }
+    }
+  }
+
+  .mine-progress-text {
+
+  }
+}

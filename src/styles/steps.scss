@@ -1,0 +1,132 @@
+.mine-steps {
+  font-size: 0;
+  width: 100%;
+  line-height: 1.5;
+
+  &.mine-steps-horizontal {
+    .mine-step-item {
+      display: inline-block;
+      position: relative;
+
+      .mine-step-line {
+        width: 100%;
+        padding: 0 10px;
+        position: absolute;
+        left: 0;
+        top: 10px;
+
+        i {
+          display: inline-block;
+          width: 100%;
+          height: 1px;
+          background: #e8eaec
+        }
+      }
+
+      .mine-step-tag {
+        background: #fff;
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        padding-left: 10px;
+        margin-left: -10px;
+
+        .mine-step-tag-inner {
+          width: 18px;
+          height: 18px;
+          line-height: 16px;
+          margin-right: 10px;
+          text-align: center;
+          border-radius: 50%;
+          font-size: 12px;
+          border: 1px solid #ccc;
+          transition: background-color .2s ease-in-out;
+          box-sizing: border-box;
+        }
+      }
+
+      .mine-step-main {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+
+        .mine-step-title {
+          margin-bottom: 4px;
+          margin-top: 0;
+          color: #666;
+          font-size: 12px;
+          font-weight: 700;
+          background: #fff;
+        }
+
+      }
+    }
+  }
+
+  &.mine-steps-vertical {
+    .mine-step-item {
+      display: block;
+      position: relative;
+
+      .mine-step-line {
+        position: absolute;
+        left: 13px;
+        top: 0;
+        height: 100%;
+        width: 1px;
+        padding: 33px 0 4px;
+        box-sizing: border-box;
+
+        i {
+          width: 1px;
+          height: 100%;
+          display: inline-block;
+          vertical-align: top;
+          background: #e8eaec;
+          border-radius: 1px;
+          position: relative;
+        }
+      }
+
+      .mine-step-tag {
+        float: left;
+        background: #fff;
+
+        .mine-step-tag-inner {
+          display: block;
+          width: 26px;
+          height: 26px;
+          line-height: 24px;
+          margin-right: 8px;
+          text-align: center;
+          border: 1px solid #ccc;
+          border-radius: 50%;
+          font-size: 14px;
+          transition: background-color .2s ease-in-out;
+        }
+      }
+
+      .mine-step-main {
+        min-height: 75px;
+        overflow: hidden;
+        display: block;
+
+        .mine-step-title {
+          font-size: 14px;
+          color: #999;
+          line-height: 26px;
+          display: inline-block;
+          margin-bottom: 4px;
+          padding-right: 10px;
+          font-weight: 700;
+          background: #fff;
+        }
+
+        .mine-step-content {
+          color: #666;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

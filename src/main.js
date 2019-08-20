@@ -2,8 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import './assets/iconfont/iconfont.css'
-Vue.config.productionTip = false
+import './assets/iconfont/iconfont.css';
+import './styles/main.scss'
+Vue.config.productionTip = false;
 
 new Vue({
   router,
