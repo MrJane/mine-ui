@@ -45,7 +45,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
     .mine-icon {
         display: inline-block;
         font-family: MineIcons;
