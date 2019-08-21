@@ -1,9 +1,17 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+
+import ElementUI from 'element-ui'
+import iView from 'iview';
+Vue.use(ElementUI);
+Vue.use(iView)
 import './assets/iconfont/iconfont.css';
 import './styles/main.scss'
+import 'element-ui/lib/theme-chalk/index.css'
+import 'iview/dist/styles/iview.css';
+
 Vue.config.productionTip = false;
 
 new Vue({
