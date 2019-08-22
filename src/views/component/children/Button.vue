@@ -43,6 +43,15 @@
 
             </mine-collapse-item>
         </mine-collapse>
+        <br>
+
+        <mine-rate v-model="value3"></mine-rate>
+        <br>
+        <mine-rate :value="3" allow-half></mine-rate>
+        <br>
+        <el-rate v-model="value3"
+                show-text>
+        </el-rate>
     </div>
 </template>
 
@@ -51,12 +60,13 @@
   import MineButton from '@/components/button/button'
   import MineButtonGroup from '@/components/button/button-group';
   import MineCollapse from '../../../components/collapse/collapse';
-  import MineCollapseItem from '../../../components/collapse/collapse-item'
+  import MineCollapseItem from '../../../components/collapse/collapse-item';
+  import MineRate from '../../../components/rate/rate';
 
   export default {
     name: "Button",
     components: {
-      MineButton, MineCard, MineButtonGroup, MineCollapse, MineCollapseItem
+      MineButton, MineCard, MineButtonGroup, MineCollapse, MineCollapseItem,MineRate
     },
     methods: {
       handlerChange(value) {
@@ -66,7 +76,8 @@
 
     data() {
       return {
-        value: ['2', '3']
+        value: ['2', '3'],
+        value3:2
       }
     }
   }
