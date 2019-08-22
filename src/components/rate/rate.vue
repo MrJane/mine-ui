@@ -10,7 +10,7 @@
                 @mouseleave="handleResetValue"
         >
             <i class="mine-rate-star" :class="item<=currentIndex?'mine-rate-star-active':''">
-                <i></i>
+                <i v-if="false" class="mine-rate-decimal" :style="decimalStyle"></i>
             </i>
         </span>
         <span v-show="showText" class="mine-rate-text">{{showText}}</span>
@@ -45,25 +45,50 @@
         type: String,
         default: 'rgb(247, 186, 42)'
       },
-      allowHalf:{
-        type:Boolean,
-        default:true
+      allowHalf: {
+        type: Boolean,
+        default: true
       },
-      showText:{
-        type:Boolean,
-        default:false
+      showText: {
+        type: Boolean,
+        default: false
       }
     },
     computed: {
       currentIndex() {
         //点击事件就去currentValue移动事件取hoverIndex值
         return this.isHover ? this.hoverIndex : this.currentValue
+      },
+      decimalStyle() {
+        let width = '';
+        if (this.disabled) {
+          // width = `${ this.valueDecimal }%`;
+        } else if (this.allowHalf) {
+          width = '50%';
+        }
+        return {
+          color: 'red',
+          width
+        };
       }
     },
     methods: {
       handleMousemove(e, value) {
         if (this.disabled) return; //禁用的话直接return
         // this.currentValue = value;
+        console.log(e.target, 'target-----')
+        if (this.allowHalf) {
+          let target = e.target;
+          if (this.hasClass(target, 'mine-rate-item')) {
+            target = target.querySelector('.mine-rate-star')
+          }
+          if (this.hasClass(target, 'mine-rate-decimal')) {
+            target = target.parentNode;
+          }
+          this.pointerAtLeftHalf = e.offsetX * 2 <= target.clientWidth;
+          this.currentValue = this.pointerAtLeftHalf ? value - 0.5 : value;
+          console.log(this.currentValue, 'dddddddddddddd')
+        }
         //标志移动事件
         this.isHover = true;
         this.hoverIndex = value;
@@ -80,10 +105,19 @@
         this.isHover = false;
         // this.currentValue = this.value;
         // this.hoverIndex = -1;
+      },
+      hasClass(el, cls) {
+        if (!el || !cls) return false;
+        if (cls.indexOf(' ') !== -1) throw new Error('className should not contain space.');
+        if (el.classList) {
+          return el.classList.contains(cls);
+        } else {
+          return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') > -1;
+        }
       }
     },
-    mounted(){
-      console.log(this.allowHalf,'对半')
+    mounted() {
+      console.log(this.allowHalf, '对半')
     },
     watch: {
       value() {
