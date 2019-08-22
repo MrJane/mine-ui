@@ -1,7 +1,7 @@
 <template>
     <div class="home">
 
-        <mine-card class="box-card">
+        <mine-card v-model="single" class="box-card">
             <mine-button size="large" type="primary" class="primary">大号按钮</mine-button>
             <mine-button>默认按钮</mine-button>
             <mine-button disabled>默认按钮失效</mine-button>
@@ -36,7 +36,9 @@
             </div>
         </mine-card>
         <mine-card class="box-card">
-            <mine-radio label="hello">label</mine-radio>
+<!--            <mine-radio v-model="single" label="hello">label</mine-radio>-->
+<!--            <Radio v-model="single">Radio</Radio>-->
+<!--            <Radio v-model="single">Radio</Radio>-->
         </mine-card>
 
         <div class="card">
@@ -48,15 +50,15 @@
 
         <mine-card class="box-card">
             <div>
-                <mine-radio-group>
-                    <mine-radio label="hello">label</mine-radio>
-                    <mine-radio label="hello">label</mine-radio>
-                </mine-radio-group>
+<!--                <mine-radio-group>-->
+<!--                    <mine-radio label="hello">label</mine-radio>-->
+<!--                    <mine-radio label="hello">label</mine-radio>-->
+<!--                </mine-radio-group>-->
             </div>
             <div>
-                <mine-radio-group type="button">
+                <mine-radio-group value="hello" type="button">
                     <mine-radio label="hello">label</mine-radio>
-                    <mine-radio label="hello">label</mine-radio>
+                    <mine-radio label="world">label</mine-radio>
                 </mine-radio-group>
             </div>
         </mine-card>
@@ -109,6 +111,8 @@
                 </mine-menu-item>
             </mine-menu>
         </div>
+        <hr>
+        <input type="radio">
     </div>
 </template>
 
@@ -130,6 +134,11 @@
 
   export default {
     name: 'home',
+    data () {
+      return {
+        single: ''
+      }
+    },
     components: {
       MineButton,
       MineButtonGroup,
@@ -145,6 +154,11 @@
       MineSteps,
       MineStep,
       MineProgress
+    },
+    watch: {
+      single () {
+        console.log(this.single, 'signle')
+      }
     }
   }
 </script>

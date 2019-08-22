@@ -35,13 +35,21 @@
       custom: {
         type: String,
         default:''
-      }
+      },
+      // value:{
+      // type:String}
+    },
+    mounted(){
+    console.log(this.value,'kkkkkkkkkk')
     },
     methods:{
       handleClick(event){
         this.$emit('click',event)
       }
-    }
+    },
+    watch:{
+    value(){
+    console.log(this.value,'lllllllllllllllll')}}
   }
 </script>
 
