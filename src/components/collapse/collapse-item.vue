@@ -1,6 +1,6 @@
 <template>
     <div class="mine-collapse-item" @click="toggle">
-        <div class="mine-collapse-header">
+        <div class="mine-collapse-header" :style="styles">
             <icon type="iconcheck"></icon>
             <slot></slot>
         </div>
@@ -18,7 +18,7 @@
     components: {
       Icon
     },
-    data () {
+    data() {
       return {
         index: 0,
         isActive: false
@@ -30,8 +30,18 @@
         required: true
       }
     },
+    computed:{
+      styles(){
+        return this.isActive?{borderBottom:'1px solid #dcdee2'}:{}
+      }
+    },
     methods: {
-      toggle () {
+      toggle() {
+        this.$parent.toggle({
+          name: this.name,
+          isActive:this.isActive
+        })
+        console.log(this.$parent, 'parent==========')
       }
     }
   }

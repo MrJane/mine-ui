@@ -11,7 +11,7 @@
             </mine-button-group>
         </mine-card>
         <Page :total="100"/>
-        <Collapse>
+        <Collapse :value="['1','2']">
             <Panel name="1">
                 史蒂夫·乔布斯
                 <p slot="content">史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。</p>
@@ -29,9 +29,9 @@
             </Panel>
         </Collapse>
         <br>
-        <mine-collapse value="1">
+        <mine-collapse @change="handlerChange" v-model="value" :accordion="true">
             <mine-collapse-item name="1">
-                斯蒂夫·盖瑞·沃兹尼亚克
+                斯蒂夫·盖瑞·沃兹尼亚克 {{value}}
                 <div slot="content">
                     乔纳森·伊夫是一位工业设计师，现任Apple公司设计师兼资深副总裁，英国爵士。他曾参与设计了iPod，iMac，iPhone，iPad等众多苹果产品。除了乔布斯，他是对苹果那些著名的产品最有影响力的人。
                 </div>
@@ -57,6 +57,17 @@
     name: "Button",
     components: {
       MineButton, MineCard, MineButtonGroup, MineCollapse, MineCollapseItem
+    },
+    methods: {
+      handlerChange(value) {
+        // alert(value + 'hello')
+      }
+    },
+
+    data() {
+      return {
+        value: ['2', '3']
+      }
     }
   }
 </script>
