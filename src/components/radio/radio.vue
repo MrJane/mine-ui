@@ -1,8 +1,14 @@
 <template>
     <label class="mine-radio-wrap">
-        <span class="mine-radio mine-radio-checked">
+        <span class="mine-radio" :class="wrapClasses">
             <span class="mine-radio-inner"></span>
-            <input type="radio" class="mine-radio-input">
+            <input type="radio"
+                   class="mine-radio-input"
+                   :disabled="disabled"
+                   :checked="currentValue"
+                   :name="groupName"
+                   @change="handleChange"
+            >
         </span>
         <slot>{{ label }}</slot>
     </label>
@@ -11,61 +17,76 @@
 <script>
   export default {
     name: 'mine-radio',
+    data () {
+      return {
+        currentValue: this.value,
+        focus: false,
+        isGroup: false,//判断是不是分组
+        groupName: this.name
+      }
+    },
     props: {
-      value: {},
+      value: {
+        type: [String, Number, Boolean],
+        default: false
+      },
+      trueValue: {
+        type: [String, Number, Boolean],
+        default: true
+      },
+      falseValue: {
+        type: [String, Number, Boolean],
+        default: false
+      },
       label: {
         type: String,
         default: 'ddd'
       },
       disabled: Boolean,
+      checked: Boolean,
       name: String,
       border: Boolean,
-      size: String
-    },
-    data () {
-      return {
-        focus: false
-      };
+      size: String,
+
     },
     computed: {
+      wrapClasses () {
+        return [
+          {'mine-radio-checked': this.currentValue}]
+      },
 
-      model: {
-        get () {
-          return this.isGroup ? this._radioGroup.value : this.value;
-        },
-        set (val) {
-          if (this.isGroup) {
-            this.dispatch('ElRadioGroup', 'input', [val]);
-          } else {
-            this.$emit('input', val);
-          }
-          this.$refs.radio && (this.$refs.radio.checked = this.model === this.label);
-        }
-      },
-      _elFormItemSize () {
-        return (this.elFormItem || {}).elFormItemSize;
-      },
-      radioSize () {
-        const temRadioSize = this.size || this._elFormItemSize || (this.$ELEMENT || {}).size;
-        return this.isGroup
-          ? this._radioGroup.radioGroupSize || temRadioSize
-          : temRadioSize;
-      },
-      isDisabled () {
-        return this.isGroup
-          ? this._radioGroup.disabled || this.disabled || (this.elForm || {}).disabled
-          : this.disabled || (this.elForm || {}).disabled;
-      },
-      tabIndex () {
-        return (this.isDisabled || (this.isGroup && this.model !== this.label)) ? -1 : 0;
+    },
+    mounted () {
+      //判断父元素是不是 radio-group,是的话isGroup设置会true
+      if (this.$parent.$options.name === 'mine-radio-group') {
+        this.isGroup = true;
+        this.groupName = this.$parent.$options.name
       }
+      if (this.isGroup) {
+        this.$parent.updateValue();
+      } else {
+        this.updateValue()
+      }
+      // console.log(this.$parent.$options.name, 'dddd');
     },
     methods: {
-      handleChange () {
-        this.$nextTick(() => {
-          this.$emit('change', this.model);
-          this.isGroup && this.dispatch('ElRadioGroup', 'handleChange', this.model);
-        });
+      handleChange (event) {
+        // console.log(event, 'radio');
+        if (this.disabled) return;
+        //获取checked值，radio选中的时候会返回true
+        const checked = event.target.checked;
+        this.currentValue = checked;
+        const value = checked ? this.trueValue : this.falseValue;
+        this.$emit('input', value);
+        if (this.isGroup) {
+        }
+        // console.log(event.target.value, 'ggggggggg')
+        // this.$nextTick(() => {
+        //
+        // });
+      },
+      updateValue(){
+        this.currentValue = this.value === this.trueValue;
       }
     }
   }
@@ -80,9 +101,11 @@
         white-space: nowrap;
         margin-right: 8px;
         cursor: pointer;
+
         * {
             box-sizing: border-box;
         }
+
         .mine-radio {
             display: inline-block;
             margin-right: 4px;

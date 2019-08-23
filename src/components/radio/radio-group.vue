@@ -1,16 +1,55 @@
 <template>
-    <div class="mine-radio-group mine-radio-group-button">
+    <div class="mine-radio-group">
         <slot></slot>
     </div>
 </template>
 
 <script>
   export default {
-    name: "radio-group",
+    name: "mine-radio-group",
+    data () {
+      return {
+        currentValue: this.value
+      }
+    },
     props: {
+      value:{
+      type:[Number,String,Boolean]},
       type: {
         type: String,
         default: ''
+      }
+    },
+    mounted () {
+      this.updateValue()
+    },
+    methods: {
+      updateValue () {
+        let children = this.$children;
+        if (children) {
+          children.forEach(child => {
+
+            if (child.$options.name === 'mine-radio') {
+              //判断currentValue是等于哪个child的label值，就把这个child的currentValue设置为true
+              child.currentValue = this.currentValue===child.label;
+              child.isGroup = true;
+              console.log(child.currentValue,'name')
+            }
+          })
+        }
+      },
+      change (data) {
+
+      }
+    },
+    watch: {
+      value () {
+        if (this.currentValue !== this.value) {
+          this.currentValue = this.value;
+          this.$nextTick(() => {
+            // this.updateValue();
+          });
+        }
       }
     }
   }
