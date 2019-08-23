@@ -1,5 +1,5 @@
 <template>
-    <span class="mine-switch" :class="checked?'mine-switch-checked':''">
+    <span @click="toggle" class="mine-switch" :class="currentValue?'mine-switch-checked':''">
         <input type="hidden">
         <span class="mine-switch-inner">
             <slot name="open"></slot>
@@ -12,8 +12,44 @@
   export default {
     name: "mine-switch",
     props: {
+      //用于v-model绑定
+      value: {
+        type: [String, Number, Boolean]
+      },
+      trueValue: {
+        type: [String, Number, Boolean],
+        default: true
+      },
+      falseValue: {
+        type: [String, Number, Boolean],
+        default: false
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
       checked: {
         type: [String, Boolean]
+      }
+    },
+    data() {
+      return {
+        //基本套路组件内部设置currentValue复制于value
+        currentValue: this.value
+      }
+    },
+    methods: {
+      toggle(e) {
+        //禁用 return
+        if (this.disabled) return;
+        const checked = this.currentValue === this.trueValue ? this.falseValue : this.trueValue;
+        this.currentValue = checked;
+        //用于v-model 中的input事件
+        this.$emit('input', checked);
+        //发送change事件
+        this.$emit('change',checked);
+        // this.currentValue = !this.currentValue;
+        // console.log(e, 'ddddddddddddd')
       }
     }
   }
@@ -48,6 +84,7 @@
 
             .mine-switch-inner {
             }
+
             &:after {
                 left: 23px;
             }

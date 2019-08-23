@@ -17,7 +17,7 @@
 <script>
   export default {
     name: 'mine-radio',
-    data () {
+    data() {
       return {
         currentValue: this.value,
         focus: false,
@@ -50,27 +50,27 @@
 
     },
     computed: {
-      wrapClasses () {
+      wrapClasses() {
         return [
           {'mine-radio-checked': this.currentValue}]
       },
 
     },
-    mounted () {
+    mounted() {
       //判断父元素是不是 radio-group,是的话isGroup设置会true
       if (this.$parent.$options.name === 'mine-radio-group') {
         this.isGroup = true;
         this.groupName = this.$parent.$options.name
       }
       if (this.isGroup) {
-        this.$parent.updateValue();
+        this.$parent.updateChildValue();
       } else {
         this.updateValue()
       }
       // console.log(this.$parent.$options.name, 'dddd');
     },
     methods: {
-      handleChange (event) {
+      handleChange(event) {
         // console.log(event, 'radio');
         if (this.disabled) return;
         //获取checked值，radio选中的时候会返回true
@@ -79,13 +79,16 @@
         const value = checked ? this.trueValue : this.falseValue;
         this.$emit('input', value);
         if (this.isGroup) {
+          if (this.label !== undefined) {
+            this.$parent.change({value: this.label})
+          }
         }
         // console.log(event.target.value, 'ggggggggg')
         // this.$nextTick(() => {
         //
         // });
       },
-      updateValue(){
+      updateValue() {
         this.currentValue = this.value === this.trueValue;
       }
     }

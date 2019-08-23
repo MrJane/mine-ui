@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" v-model="model" value="1" @change="changeHandler">
+    <input type="checkbox" v-model="model" value="2">
+    <input type="checkbox" v-model="model" value="3">
+    {{model}}
+<!--    <input type="checkbox">-->
+<!--    <input type="checkbox">-->
+
+</div>
+
+<script>
+    // box.onchange=function (e) {
+    //   console.log(e)
+    //   console.log(e.target.value)
+    // }
+    // 实例化vue对象
+    new Vue({
+      el:"#app",
+      data:{
+        name:"hello vue",
+        model:['1','2','3'],
+        select:'4'
+      },
+      methods:{
+        changeHandler(){
+          console.log(this.model);
+        }
+      }
+    })
+</script>
+</body>
+</html>

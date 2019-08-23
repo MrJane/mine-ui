@@ -8,6 +8,10 @@
   export default {
     name: "mine-input",
     props: {
+      //用于v-model绑定
+      value:{
+        type:[Boolean,String,Number]
+      },
       type: {
         type: String,
         default: 'text'

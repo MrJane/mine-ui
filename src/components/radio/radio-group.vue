@@ -7,43 +7,46 @@
 <script>
   export default {
     name: "mine-radio-group",
-    data () {
+    data() {
       return {
         currentValue: this.value
       }
     },
     props: {
-      value:{
-      type:[Number,String,Boolean]},
+      value: {
+        type: [Number, String, Boolean]
+      },
       type: {
         type: String,
         default: ''
       }
     },
-    mounted () {
-      this.updateValue()
+    mounted() {
+      this.updateChildValue()
     },
     methods: {
-      updateValue () {
+      updateChildValue() {
         let children = this.$children;
         if (children) {
           children.forEach(child => {
-
             if (child.$options.name === 'mine-radio') {
               //判断currentValue是等于哪个child的label值，就把这个child的currentValue设置为true
-              child.currentValue = this.currentValue===child.label;
+              child.currentValue = this.currentValue === child.label;
               child.isGroup = true;
-              console.log(child.currentValue,'name')
+              // console.log(child.currentValue, 'name')
             }
           })
         }
       },
-      change (data) {
-
+      change(data) {
+        //获取子组件传来的label值，赋值给currentValue，然后再更新子组件的currentValue
+        this.currentValue = data.value;
+        this.updateChildValue();
+        // console.log(data,'子组件传来的')
       }
     },
     watch: {
-      value () {
+      value() {
         if (this.currentValue !== this.value) {
           this.currentValue = this.value;
           this.$nextTick(() => {
