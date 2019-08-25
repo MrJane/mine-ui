@@ -1,45 +1,45 @@
 <template>
     <div class="home">
 
-<!--        <mine-card v-model="single" class="box-card">-->
-<!--            <mine-button size="large" type="primary" class="primary">大号按钮</mine-button>-->
-<!--            <mine-button>默认按钮</mine-button>-->
-<!--            <mine-button disabled>默认按钮失效</mine-button>-->
-<!--            <mine-button size="small">幽灵按钮</mine-button>-->
-<!--        </mine-card>-->
-<!--        <mine-card class="box-card">-->
-<!--            <mine-button-group>-->
-<!--                <mine-button>默认按钮</mine-button>-->
-<!--                <mine-button>默认按钮</mine-button>-->
-<!--            </mine-button-group>-->
-<!--            <mine-button-group>-->
-<!--                <mine-button>默认按钮</mine-button>-->
-<!--                <mine-button>默认按钮</mine-button>-->
-<!--                <mine-button>默认按钮</mine-button>-->
-<!--                <mine-button>默认按钮</mine-button>-->
-<!--                <mine-button>默认按钮</mine-button>-->
-<!--            </mine-button-group>-->
-<!--            <mine-button-group>-->
-<!--                <mine-button size="large" type="primary">默认按钮</mine-button>-->
-<!--                <mine-button size="large" type="primary">默认按钮</mine-button>-->
-<!--                <mine-button size="large" type="primary">默认按钮</mine-button>-->
-<!--                <mine-button size="large" type="primary">默认按钮</mine-button>-->
-<!--            </mine-button-group>-->
-<!--        </mine-card>-->
-<!--        <mine-card class="box-card">-->
-<!--            <div slot="header" class="clearfix">-->
-<!--                <span>卡片名称</span>-->
-<!--                <a size="large" type="primary">默认按钮</a>-->
-<!--            </div>-->
-<!--            <div v-for="o in 4" :key="o" class="text item">-->
-<!--                {{'列表内容 ' + o }}-->
-<!--            </div>-->
-<!--        </mine-card>-->
-<!--        <mine-card class="box-card">-->
-<!--            <mine-radio v-model="single" label="hello">label</mine-radio>-->
-<!--            <Radio v-model="single">Radio</Radio>-->
-<!--            <Radio v-model="single">Radio</Radio>-->
-<!--        </mine-card>-->
+        <!--        <mine-card v-model="single" class="box-card">-->
+        <!--            <mine-button size="large" type="primary" class="primary">大号按钮</mine-button>-->
+        <!--            <mine-button>默认按钮</mine-button>-->
+        <!--            <mine-button disabled>默认按钮失效</mine-button>-->
+        <!--            <mine-button size="small">幽灵按钮</mine-button>-->
+        <!--        </mine-card>-->
+        <!--        <mine-card class="box-card">-->
+        <!--            <mine-button-group>-->
+        <!--                <mine-button>默认按钮</mine-button>-->
+        <!--                <mine-button>默认按钮</mine-button>-->
+        <!--            </mine-button-group>-->
+        <!--            <mine-button-group>-->
+        <!--                <mine-button>默认按钮</mine-button>-->
+        <!--                <mine-button>默认按钮</mine-button>-->
+        <!--                <mine-button>默认按钮</mine-button>-->
+        <!--                <mine-button>默认按钮</mine-button>-->
+        <!--                <mine-button>默认按钮</mine-button>-->
+        <!--            </mine-button-group>-->
+        <!--            <mine-button-group>-->
+        <!--                <mine-button size="large" type="primary">默认按钮</mine-button>-->
+        <!--                <mine-button size="large" type="primary">默认按钮</mine-button>-->
+        <!--                <mine-button size="large" type="primary">默认按钮</mine-button>-->
+        <!--                <mine-button size="large" type="primary">默认按钮</mine-button>-->
+        <!--            </mine-button-group>-->
+        <!--        </mine-card>-->
+        <!--        <mine-card class="box-card">-->
+        <!--            <div slot="header" class="clearfix">-->
+        <!--                <span>卡片名称</span>-->
+        <!--                <a size="large" type="primary">默认按钮</a>-->
+        <!--            </div>-->
+        <!--            <div v-for="o in 4" :key="o" class="text item">-->
+        <!--                {{'列表内容 ' + o }}-->
+        <!--            </div>-->
+        <!--        </mine-card>-->
+        <!--        <mine-card class="box-card">-->
+        <!--            <mine-radio v-model="single" label="hello">label</mine-radio>-->
+        <!--            <Radio v-model="single">Radio</Radio>-->
+        <!--            <Radio v-model="single">Radio</Radio>-->
+        <!--        </mine-card>-->
 
         <div class="card">
             <icon type="iconcheck"></icon>
@@ -48,20 +48,20 @@
             <icon custom="iconfont iconlocationfill" size="24"/>
         </div>
 
-<!--        <mine-card class="box-card">-->
-<!--            <div>-->
-<!--                <mine-radio-group>-->
-<!--                    <mine-radio label="hello">label</mine-radio>-->
-<!--                    <mine-radio label="hello">label</mine-radio>-->
-<!--                </mine-radio-group>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <mine-radio-group value="hello" type="button">-->
-<!--                    <mine-radio label="hello">label</mine-radio>-->
-<!--                    <mine-radio label="world">label</mine-radio>-->
-<!--                </mine-radio-group>-->
-<!--            </div>-->
-<!--        </mine-card>-->
+        <!--        <mine-card class="box-card">-->
+        <!--            <div>-->
+        <!--                <mine-radio-group>-->
+        <!--                    <mine-radio label="hello">label</mine-radio>-->
+        <!--                    <mine-radio label="hello">label</mine-radio>-->
+        <!--                </mine-radio-group>-->
+        <!--            </div>-->
+        <!--            <div>-->
+        <!--                <mine-radio-group value="hello" type="button">-->
+        <!--                    <mine-radio label="hello">label</mine-radio>-->
+        <!--                    <mine-radio label="world">label</mine-radio>-->
+        <!--                </mine-radio-group>-->
+        <!--            </div>-->
+        <!--        </mine-card>-->
         <mine-card class="box-card">
             <mine-switch></mine-switch>
             <mine-switch :value="true" @change="handlerChange"></mine-switch>
@@ -74,7 +74,7 @@
                 <mine-checkbox label="twitter"></mine-checkbox>
             </mine-checkbox-group>
             {{testCheck}}
-<!--            <mine-badge></mine-badge>-->
+            <!--            <mine-badge></mine-badge>-->
         </mine-card>
         <mine-card class="box-card">
             <mine-steps direction="horizontal">
@@ -90,36 +90,61 @@
                 <mine-step title="待进行" content="这里是该步骤的描述信"></mine-step>
             </mine-steps>
         </mine-card>
-<!--        <mine-card :bodyStyle="{width:'600px'}" class="box-card">-->
-<!--            <mine-progress :percent="25"></mine-progress>-->
-<!--            <mine-progress :percent="50" status="active"></mine-progress>-->
-<!--            <mine-progress :percent="75" status="success"></mine-progress>-->
-<!--            <mine-progress :percent="75" status="wrong"></mine-progress>-->
-<!--        </mine-card>-->
+        <!--        <mine-card :bodyStyle="{width:'600px'}" class="box-card">-->
+        <!--            <mine-progress :percent="25"></mine-progress>-->
+        <!--            <mine-progress :percent="50" status="active"></mine-progress>-->
+        <!--            <mine-progress :percent="75" status="success"></mine-progress>-->
+        <!--            <mine-progress :percent="75" status="wrong"></mine-progress>-->
+        <!--        </mine-card>-->
         <div class="card" style="width: 240px">
-<!--            <mine-menu active-name="3">-->
-<!--                <mine-menu-group title="家庭住址">-->
-<!--                    <mine-menu-item name="1">-->
-<!--                        <icon type="iconlocationfill"></icon>-->
-<!--                        文章管理-->
-<!--                    </mine-menu-item>-->
-<!--                    <mine-menu-item name="2">-->
-<!--                        <icon type="iconfavorfill"></icon>-->
-<!--                        分类管理-->
-<!--                    </mine-menu-item>-->
-<!--                </mine-menu-group>-->
-<!--                <mine-menu-item name="3">-->
-<!--                    <icon type="iconlocationfill"></icon>-->
-<!--                    评论管理-->
-<!--                </mine-menu-item>-->
-<!--                <mine-menu-item name="4">-->
-<!--                    <icon type="iconlocationfill"></icon>-->
-<!--                    用户留存-->
-<!--                </mine-menu-item>-->
-<!--            </mine-menu>-->
+            <!--            <mine-menu active-name="3">-->
+            <!--                <mine-menu-group title="家庭住址">-->
+            <!--                    <mine-menu-item name="1">-->
+            <!--                        <icon type="iconlocationfill"></icon>-->
+            <!--                        文章管理-->
+            <!--                    </mine-menu-item>-->
+            <!--                    <mine-menu-item name="2">-->
+            <!--                        <icon type="iconfavorfill"></icon>-->
+            <!--                        分类管理-->
+            <!--                    </mine-menu-item>-->
+            <!--                </mine-menu-group>-->
+            <!--                <mine-menu-item name="3">-->
+            <!--                    <icon type="iconlocationfill"></icon>-->
+            <!--                    评论管理-->
+            <!--                </mine-menu-item>-->
+            <!--                <mine-menu-item name="4">-->
+            <!--                    <icon type="iconlocationfill"></icon>-->
+            <!--                    用户留存-->
+            <!--                </mine-menu-item>-->
+            <!--            </mine-menu>-->
         </div>
         <hr>
-        <input type="radio">
+        <mine-pager :total-page="10" :current-page="2"></mine-pager>
+        <!--        <input type="radio">-->
+        <hr>
+        <div class="item-test">
+            <mine-swiper>
+                <mine-swiper-item>1</mine-swiper-item>
+                <mine-swiper-item>2</mine-swiper-item>
+                <mine-swiper-item>3</mine-swiper-item>
+            </mine-swiper>
+        </div>
+        <hr>
+        <div style="margin-left: 250px">
+            <p v-for="num in 20">测试</p>
+<!--            <p>测试</p>-->
+<!--            <p>测试</p>-->
+<!--            <p>测试</p>-->
+<!--            <p>测试</p>-->
+<!--            <p>测试</p>-->
+<!--            <p>测试</p>-->
+
+
+            <mine-affix>
+                <div>固定测试组件</div>
+            </mine-affix>
+            <p v-for="num in 20">测试</p>
+        </div>
     </div>
 </template>
 
@@ -140,13 +165,17 @@
   import MineProgress from '../components/progress/progress';
   import MineCheckbox from '../components/checkbox/checkbox';
   import MineCheckboxGroup from '../components/checkbox/checkbox-group';
+  import MinePager from '../components/pager/pager';
+  import MineSwiperItem from '../components/swiper/swiper-item'
+  import MineSwiper from '../components/swiper/swiper';
+  import MineAffix from '../components/affix/affix'
 
   export default {
     name: 'home',
-    data() {
+    data () {
       return {
         single: '',
-        testCheck:['facebook']
+        testCheck: ['facebook']
       }
     },
     components: {
@@ -165,15 +194,19 @@
       MineStep,
       MineProgress,
       MineCheckbox,
-      MineCheckboxGroup
+      MineCheckboxGroup,
+      MinePager,
+      MineSwiper,
+      MineSwiperItem,
+      MineAffix
     },
     methods: {
-      handlerChange(status) {
+      handlerChange (status) {
         this.$Message.info('开关状态：' + status);
       }
     },
     watch: {
-      single() {
+      single () {
         console.log(this.single, 'signle')
       }
     }
@@ -193,6 +226,12 @@
 
     .home {
         margin-bottom: 20px;
+    }
+
+    .item-test {
+        width: 400px;
+        margin-left: 240px;
+        height: 250px;
     }
 </style>
 

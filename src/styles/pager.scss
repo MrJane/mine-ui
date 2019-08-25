@@ -1,0 +1,29 @@
+.mine-pager {
+  margin-left: 300px;
+  font-size: 16px;
+  color: #515a6e;
+  list-style: none;
+
+  .mine-page-item {
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 32px;
+    height: 32px;
+    line-height: 30px;
+    margin-right: 4px;
+    text-align: center;
+    list-style: none;
+    background-color: #fff;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 500;
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
+    transition: border .2s ease-in-out, color .2s ease-in-out;
+
+    &:hover {
+      border-color: #2db7f5;
+      color:#2db7f5;
+    }
+  }
+}
