@@ -9,14 +9,29 @@
     name: "mine-input",
     props: {
       //用于v-model绑定
-      value:{
-        type:[Boolean,String,Number]
+      value: {
+        type: [Boolean, String, Number]
       },
       type: {
         type: String,
         default: 'text'
       },
       disabled: {
+        type: Boolean,
+        default: false
+      },
+      //头部Icon
+      prefixIcon: {
+        type: String,
+        default: ''
+      },
+      //尾部Icon
+      suffixIcon: {
+        type: String,
+        default: ''
+      },
+      //是否清空
+      clearable: {
         type: Boolean,
         default: false
       }
