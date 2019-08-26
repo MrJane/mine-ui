@@ -119,9 +119,38 @@
             <!--            </mine-menu>-->
         </div>
         <hr>
+
         <input type="radio">
         <hr>
-        <mine-input></mine-input>
+
+
+        <mine-pager :total-page="10" :current-page="2"></mine-pager>
+        <!--        <input type="radio">-->
+        <hr>
+        <div class="item-test">
+            <mine-swiper>
+                <mine-swiper-item>1</mine-swiper-item>
+                <mine-swiper-item>2</mine-swiper-item>
+                <mine-swiper-item>3</mine-swiper-item>
+            </mine-swiper>
+        </div>
+        <hr>
+        <div style="margin-left: 250px">
+            <p v-for="num in 20">测试</p>
+<!--            <p>测试</p>-->
+<!--            <p>测试</p>-->
+<!--            <p>测试</p>-->
+<!--            <p>测试</p>-->
+<!--            <p>测试</p>-->
+<!--            <p>测试</p>-->
+
+
+            <mine-affix>
+                <div>固定测试组件</div>
+            </mine-affix>
+            <p v-for="num in 20">测试</p>
+        </div>
+
     </div>
 </template>
 
@@ -143,10 +172,15 @@
   import MineCheckbox from '../components/checkbox/checkbox';
   import MineCheckboxGroup from '../components/checkbox/checkbox-group';
   import MineInput from '../components/input/input';
+  import MinePager from '../components/pager/pager';
+  import MineSwiperItem from '../components/swiper/swiper-item'
+  import MineSwiper from '../components/swiper/swiper';
+  import MineAffix from '../components/affix/affix'
+
 
   export default {
     name: 'home',
-    data() {
+    data () {
       return {
         single: '',
         testCheck: ['facebook']
@@ -169,15 +203,19 @@
       MineProgress,
       MineCheckbox,
       MineCheckboxGroup,
-      MineInput
+      MineInput,
+      MinePager,
+      MineSwiper,
+      MineSwiperItem,
+      MineAffix
     },
     methods: {
-      handlerChange(status) {
+      handlerChange (status) {
         this.$Message.info('开关状态：' + status);
       }
     },
     watch: {
-      single() {
+      single () {
         console.log(this.single, 'signle')
       }
     }
@@ -197,6 +235,12 @@
 
     .home {
         margin-bottom: 20px;
+    }
+
+    .item-test {
+        width: 400px;
+        margin-left: 240px;
+        height: 250px;
     }
 </style>
 

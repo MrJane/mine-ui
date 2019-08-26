@@ -91,7 +91,6 @@
                 &:last-child {
                     border-radius: 0 4px 4px 0;
                 }
-
                 .mine-radio {
                     width: 0;
                     margin-right: 0;
