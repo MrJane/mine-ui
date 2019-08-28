@@ -119,6 +119,11 @@
             <!--            </mine-menu>-->
         </div>
         <hr>
+
+        <input type="radio">
+        <hr>
+
+
         <mine-pager :total-page="10" :current-page="2"></mine-pager>
         <!--        <input type="radio">-->
         <hr>
@@ -148,6 +153,7 @@
             <p v-for="num in 20">测试</p>
             <p v-for="num in 30">测试</p>
         </div>
+
     </div>
 </template>
 
@@ -168,11 +174,13 @@
   import MineProgress from '../components/progress/progress';
   import MineCheckbox from '../components/checkbox/checkbox';
   import MineCheckboxGroup from '../components/checkbox/checkbox-group';
+  import MineInput from '../components/input/input';
   import MinePager from '../components/pager/pager';
   import MineSwiperItem from '../components/swiper/swiper-item'
   import MineSwiper from '../components/swiper/swiper';
   import MineAffix from '../components/affix/affix';
   import MineTable from '../components/table/table'
+
 
   export default {
     name: 'home',
@@ -239,6 +247,7 @@
       MineProgress,
       MineCheckbox,
       MineCheckboxGroup,
+      MineInput,
       MinePager,
       MineSwiper,
       MineSwiperItem,
