@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-
+        <mine-table style="margin-left: 300px" :columns="columns" :data="dataSource"></mine-table>
         <!--        <mine-card v-model="single" class="box-card">-->
         <!--            <mine-button size="large" type="primary" class="primary">大号按钮</mine-button>-->
         <!--            <mine-button>默认按钮</mine-button>-->
@@ -132,18 +132,21 @@
         <hr>
         <div style="margin-left: 250px">
             <p v-for="num in 20">测试</p>
-<!--            <p>测试</p>-->
-<!--            <p>测试</p>-->
-<!--            <p>测试</p>-->
-<!--            <p>测试</p>-->
-<!--            <p>测试</p>-->
-<!--            <p>测试</p>-->
+            <!--            <p>测试</p>-->
+            <!--            <p>测试</p>-->
+            <!--            <p>测试</p>-->
+            <!--            <p>测试</p>-->
+            <!--            <p>测试</p>-->
+            <!--            <p>测试</p>-->
 
 
             <mine-affix>
                 <div>固定测试组件</div>
+                <div>固定测试组件</div>
+                <div>固定测试组件</div>
             </mine-affix>
             <p v-for="num in 20">测试</p>
+            <p v-for="num in 30">测试</p>
         </div>
     </div>
 </template>
@@ -168,14 +171,55 @@
   import MinePager from '../components/pager/pager';
   import MineSwiperItem from '../components/swiper/swiper-item'
   import MineSwiper from '../components/swiper/swiper';
-  import MineAffix from '../components/affix/affix'
+  import MineAffix from '../components/affix/affix';
+  import MineTable from '../components/table/table'
 
   export default {
     name: 'home',
     data () {
       return {
         single: '',
-        testCheck: ['facebook']
+        testCheck: ['facebook'],
+        columns: [
+          {
+            title: 'Name',
+            key: 'name'
+          },
+          {
+            title: 'Age',
+            key: 'age'
+          },
+          {
+            title: 'Address',
+            key: 'address'
+          }
+        ],
+        dataSource: [
+          {
+            name: 'John Brown',
+            age: 18,
+            address: 'New York No. 1 Lake Park',
+            date: '2016-10-03'
+          },
+          {
+            name: 'Jim Green',
+            age: 24,
+            address: 'London No. 1 Lake Park',
+            date: '2016-10-01'
+          },
+          {
+            name: 'Joe Black',
+            age: 30,
+            address: 'Sydney No. 1 Lake Park',
+            date: '2016-10-02'
+          },
+          {
+            name: 'Jon Snow',
+            age: 26,
+            address: 'Ottawa No. 2 Lake Park',
+            date: '2016-10-04'
+          }
+        ]
       }
     },
     components: {
@@ -198,7 +242,8 @@
       MinePager,
       MineSwiper,
       MineSwiperItem,
-      MineAffix
+      MineAffix,
+      MineTable
     },
     methods: {
       handlerChange (status) {
