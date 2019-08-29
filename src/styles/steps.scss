@@ -8,6 +8,19 @@
       display: inline-block;
       position: relative;
 
+
+      &.mine-step-item-status-process {
+        .mine-step-tag{
+          .mine-step-tag-inner {
+            border-color: #2d8cf0;
+            background-color: #2d8cf0;
+            span{
+              color: #fff;
+            }
+          }
+        }
+      }
+
       .mine-step-line {
         width: 100%;
         padding: 0 10px;

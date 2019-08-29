@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-
+        <mine-drawer></mine-drawer>
         <!--        <mine-card v-model="single" class="box-card">-->
         <!--            <mine-button size="large" type="primary" class="primary">大号按钮</mine-button>-->
         <!--            <mine-button>默认按钮</mine-button>-->
@@ -77,7 +77,7 @@
             <!--            <mine-badge></mine-badge>-->
         </mine-card>
         <mine-card class="box-card">
-            <mine-steps direction="horizontal">
+            <mine-steps direction="horizontal" :current="1" status="process">
                 <mine-step title="进行中"></mine-step>
                 <mine-step title="待进行"></mine-step>
                 <mine-step title="待进行"></mine-step>
@@ -129,26 +129,52 @@
         <hr>
         <div class="item-test">
             <mine-swiper>
-                <mine-swiper-item>1</mine-swiper-item>
-                <mine-swiper-item>2</mine-swiper-item>
-                <mine-swiper-item>3</mine-swiper-item>
+                <div class="demo-swiper">0</div>
+                <mine-swiper-item>
+                    <div class="demo-swiper">1</div>
+                </mine-swiper-item>
+                <mine-swiper-item>
+                    <div class="demo-swiper">2</div>
+                </mine-swiper-item>
+                <mine-swiper-item>
+                    <div class="demo-swiper">3</div>
+                </mine-swiper-item>
             </mine-swiper>
+        </div>
+
+        <hr>
+        <div class="item-test">
+            <mine-carousel>
+                <!--                <div class="demo-swiper">0</div>-->
+                <mine-carousel-item>
+                    <div class="demo-swiper">1</div>
+                </mine-carousel-item>
+                <mine-carousel-item>
+                    <div class="demo-swiper">2</div>
+                </mine-carousel-item>
+                <mine-carousel-item>
+                    <div class="demo-swiper">3</div>
+                </mine-carousel-item>
+            </mine-carousel>
         </div>
         <hr>
         <div style="margin-left: 250px">
             <p v-for="num in 20">测试</p>
-<!--            <p>测试</p>-->
-<!--            <p>测试</p>-->
-<!--            <p>测试</p>-->
-<!--            <p>测试</p>-->
-<!--            <p>测试</p>-->
-<!--            <p>测试</p>-->
+            <!--            <p>测试</p>-->
+            <!--            <p>测试</p>-->
+            <!--            <p>测试</p>-->
+            <!--            <p>测试</p>-->
+            <!--            <p>测试</p>-->
+            <!--            <p>测试</p>-->
 
 
             <mine-affix>
                 <div>固定测试组件</div>
             </mine-affix>
             <p v-for="num in 20">测试</p>
+            <mine-back-top>
+
+            </mine-back-top>
         </div>
 
     </div>
@@ -176,11 +202,15 @@
   import MineSwiperItem from '../components/swiper/swiper-item'
   import MineSwiper from '../components/swiper/swiper';
   import MineAffix from '../components/affix/affix'
+  import MineCarousel from '../components/carousel/carousel';
+  import MineCarouselItem from '../components/carousel/carousel-item';
+  import MineBackTop from '../components/back-top/back-top';
+  import MineDrawer from '../components/drawer/drawer';
 
 
   export default {
     name: 'home',
-    data () {
+    data() {
       return {
         single: '',
         testCheck: ['facebook']
@@ -207,15 +237,19 @@
       MinePager,
       MineSwiper,
       MineSwiperItem,
-      MineAffix
+      MineAffix,
+      MineCarousel,
+      MineCarouselItem,
+      MineBackTop,
+      MineDrawer
     },
     methods: {
-      handlerChange (status) {
+      handlerChange(status) {
         this.$Message.info('开关状态：' + status);
       }
     },
     watch: {
-      single () {
+      single() {
         console.log(this.single, 'signle')
       }
     }
@@ -241,6 +275,15 @@
         width: 400px;
         margin-left: 240px;
         height: 250px;
+    }
+
+    .demo-swiper {
+        height: 250px;
+        line-height: 200px;
+        text-align: center;
+        color: #fff;
+        font-size: 20px;
+        background: #506b9e;
     }
 </style>
 

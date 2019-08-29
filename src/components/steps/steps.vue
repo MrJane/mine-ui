@@ -17,7 +17,8 @@
       },
       //当前状态
       status: {
-        type: String
+        type: String,
+        default:"process"
       },
       //方向:horizontal 水平 vertical垂直
       direction: {
@@ -32,20 +33,25 @@
     },
     mounted() {
       this.updateChildProps();
+      this.updateCurrent(true);
     },
     methods: {
       updateChildProps() {
         const total = this.$children.length;
-
-
         this.$children.forEach((child, index) => {
-          if (this.direction === 'horizontal') { //水平方向的设置宽度百分比
+          child.stepNumber = index + 1;
+          if (this.direction === 'horizontal') {
+            //水平方向的设置宽度百分比
             child.total = total;
           }
         });
-
-
         console.log(this.$children.length, '-------------------------')
+      },
+      updateCurrent(){
+        if (this.current < 0 || this.current >= this.$children.length ) {
+          return;
+        }
+        this.$children[this.current].currentStatus = this.status;
       }
     }
 

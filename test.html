@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript" src="https://unpkg.com/vue"></script>
-
+    <style>
+        #app{
+            height: 1200px;
+        }
+        .mask{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(55, 55, 55, .6);
+            z-index: 1000;
+        }
+    </style>
 </head>
-<body>
+<body style="overflow: hidden">
 <div id="app">
     <input type="checkbox" v-model="model" value="1" @change="changeHandler">
     <input type="checkbox" v-model="model" value="2">
@@ -14,7 +27,7 @@
     {{model}}
 <!--    <input type="checkbox">-->
 <!--    <input type="checkbox">-->
-
+<div class="mask"></div>
 </div>
 
 <script>

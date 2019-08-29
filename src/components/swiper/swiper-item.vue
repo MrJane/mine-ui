@@ -1,18 +1,19 @@
 <template>
-    <div class="mine-swiper-item" :style="styles">
-        <slot></slot>
-    </div>
+    <div :class="prefixCls" :style="styles"><slot></slot></div>
 </template>
-
 <script>
+  const prefixCls = 'ivu-carousel-item';
+
   export default {
-    name: "mine-swiper-item",
+    componentName: 'carousel-item',
+    name: 'CarouselItem',
     data () {
       return {
-        width: 400,
+        prefixCls: prefixCls,
+        width: 0,
         height: 'auto',
         left: 0
-      }
+      };
     },
     computed: {
       styles () {
@@ -20,12 +21,30 @@
           width: `${this.width}px`,
           height: `${this.height}`,
           left: `${this.left}px`
+        };
+      }
+    },
+    mounted () {
+      this.$parent.slotChange();
+    },
+    watch: {
+      width (val) {
+        if (val && this.$parent.loop) {
+          this.$nextTick(() => {
+            this.$parent.initCopyTrackDom();
+          });
+        }
+      },
+      height (val) {
+        if (val && this.$parent.loop) {
+          this.$nextTick(() => {
+            this.$parent.initCopyTrackDom();
+          });
         }
       }
+    },
+    beforeDestroy () {
+      this.$parent.slotChange();
     }
-  }
+  };
 </script>
-
-<style scoped>
-
-</style>
