@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <header>header</header>
+<!--        <header>header</header>-->
         <div class="left-nav"></div>
         <div class="router">
             <router-view/>
