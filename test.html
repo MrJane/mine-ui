@@ -27,7 +27,7 @@
     {{model}}
 <!--    <input type="checkbox">-->
 <!--    <input type="checkbox">-->
-<div class="mask"></div>
+<!--<div class="mask"></div>-->
 </div>
 
 <script>
@@ -36,8 +36,29 @@
     //   console.log(e.target.value)
     // }
     // 实例化vue对象
-    new Vue({
-      el:"#app",
+    const componentA = {
+      template: '<div class="test">hahahha</div>',
+      data(){
+        return { }
+      }
+      //...
+    }
+
+    const componentB = {
+      template: '#b',
+      data(){
+        return { }
+      }
+      //...
+    }
+
+    let instance = new Vue({
+      // template:'<div><componentA>{{name}}</componentA></div>',
+      render (h) {
+        return h(componentA, {
+          props: ''
+        });
+      },
       data:{
         name:"hello vue",
         model:['1','2','3'],
@@ -49,6 +70,9 @@
         }
       }
     })
+    let testInstance = instance.$mount();
+    document.body.append(instance.$el)
+    console.log(instance==testInstance,'是否同一个对象');
 </script>
 </body>
 </html>

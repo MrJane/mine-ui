@@ -43,7 +43,7 @@
 </template>
 
 <script>
-  import MineCard from '../../../components/card/main';
+  import MineCard from '../../../components/card/card';
   import MineRow from '../../../components/grid/row';
   import MineCol from '../../../components/grid/col';
   import MineInput from '../../../components/input/input'

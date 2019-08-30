@@ -1,9 +1,28 @@
 <template>
     <div class="home">
-
-        <mine-drawer></mine-drawer>
-        <mine-table style="margin-left: 300px" :columns="columns" :data="dataSource"></mine-table>
-
+        <mine-tooltip>
+            <mine-button size="large" type="primary" class="primary">大号按钮</mine-button>
+            <div slot="content">我是内容</div>
+        </mine-tooltip>
+        <hr>
+        <mine-loading-bar></mine-loading-bar>
+        <!--        <mine-drawer></mine-drawer>-->
+        <div style="margin-left: 300px">
+            <mine-anchor>
+                <mine-anchor-link href="#test" title="基础设置"></mine-anchor-link>
+                <mine-anchor-link href="#basic_usage" title="静态样式"></mine-anchor-link>
+                <mine-anchor-link href="#basic_usage" title="API"></mine-anchor-link>
+            </mine-anchor>
+        </div>
+        <div style="margin-left: 300px">
+            <Table :columns="columns" :data="dataSource"></Table>
+            <hr style="margin: 10px">
+            <mine-table :columns="columns" :data="dataSource"></mine-table>
+            <hr style="margin: 10px">
+            <Table border :columns="columns" :data="dataSource"></Table>
+            <hr style="margin: 10px">
+            <mine-table border stripe :columns="columns" :data="dataSource"></mine-table>
+        </div>
         <!--        <mine-card v-model="single" class="box-card">-->
         <!--            <mine-button size="large" type="primary" class="primary">大号按钮</mine-button>-->
         <!--            <mine-button>默认按钮</mine-button>-->
@@ -99,7 +118,7 @@
         <!--            <mine-progress :percent="75" status="success"></mine-progress>-->
         <!--            <mine-progress :percent="75" status="wrong"></mine-progress>-->
         <!--        </mine-card>-->
-        <div class="card" style="width: 240px">
+        <div id="test" class="card" style="width: 240px">
             <!--            <mine-menu active-name="3">-->
             <!--                <mine-menu-group title="家庭住址">-->
             <!--                    <mine-menu-item name="1">-->
@@ -120,6 +139,7 @@
             <!--                    用户留存-->
             <!--                </mine-menu-item>-->
             <!--            </mine-menu>-->
+            test
         </div>
         <hr>
 
@@ -192,7 +212,7 @@
 <script>
   import MineButton from '../components/button/button'
   import MineButtonGroup from '../components/button/button-group'
-  import MineCard from '../components/card/main'
+  import MineCard from '../components/card/card'
   import Icon from '../components/icon/icon'
   import MineMenu from '../components/menu/menu'
   import MineMenuGroup from '../components/menu/menu-group'
@@ -215,9 +235,11 @@
   import MineCarouselItem from '../components/carousel/carousel-item';
   import MineBackTop from '../components/back-top/back-top';
   import MineDrawer from '../components/drawer/drawer';
-  import MineTable from '../components/table/table'
-
-
+  import MineTable from '../components/table/table';
+  import MineAnchor from '../components/anchor/anchor';
+  import MineAnchorLink from '../components/anchor/anchor-link';
+  import MineLoadingBar from '../components/loading-bar/loading-bar';
+  import MineTooltip from '../components/tooltip/tooltip'
 
   export default {
     name: 'home',
@@ -293,7 +315,11 @@
       MineCarouselItem,
       MineBackTop,
       MineDrawer,
-      MineTable
+      MineTable,
+      MineAnchor,
+      MineAnchorLink,
+      MineLoadingBar,
+      MineTooltip
 
     },
     methods: {

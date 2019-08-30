@@ -56,7 +56,7 @@
 </template>
 
 <script>
-  import MineCard from '@/components/card/main';
+  import MineCard from '@/components/card/card';
   import MineButton from '@/components/button/button'
   import MineButtonGroup from '@/components/button/button-group';
   import MineCollapse from '../../../components/collapse/collapse';
