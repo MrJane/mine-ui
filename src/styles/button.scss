@@ -1,0 +1,108 @@
+.mine-button {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: 1.5;
+  padding: 4px 15px;
+  font-size: 12px;
+  border-radius: 4px;
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform: translate3d(0, 0, 0);
+  position: relative;
+  color: #666;
+  background-color: #f4f4f4;
+  //border-color: #d9d9d9;
+  outline: 0;
+
+  &.mine-button-round {
+    border-radius: 100px;
+  }
+  &.mine-button-circle{
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    font-size: 16px;
+    border-radius: 50px;
+    text-align: center;
+    &.mine-button-large{
+      padding: 0;
+    }
+
+  }
+
+  &.mine-button[disabled] {
+    color: $button-disabled-color;
+    background-color: $button-disabled-background;
+    border-color: #d9d9d9;
+    cursor: not-allowed;
+  }
+
+  &.mine-button-large {
+    padding: 4px 15px 5px 15px;
+    font-size: 14px;
+  }
+
+  &.mine-button-small {
+    padding: 1px 7px;
+    font-size: 12px;
+  }
+
+  &.mine-button-default {
+    color: $text-color;
+    background-color: #fff;
+    border-color: #d9d9d9;
+
+    &[disabled]:hover {
+      color: rgba(0, 0, 0, 0.25);
+      background-color: $button-disabled-background;
+      border-color: #d9d9d9;
+      text-shadow: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+
+    &:hover {
+      color: $button-primary-background;
+      background-color: white;
+      border-color: $button-primary-background;
+    }
+  }
+
+  &.mine-button-primary {
+    color: #fff;
+    background-color: $button-primary-background;
+    border-color: $button-primary-color;
+
+    &:hover {
+      color: #ffffff;
+      background-color: #00d0e0;
+      border-color: #00d0e0;
+    }
+  }
+
+  &.mine-button.success {
+  }
+
+  &.mine-button.success {
+  }
+
+  &.mine-button-dashed {
+    color: $text-color;
+    background-color: #fff;
+    border-color: #dcdee2;
+    border-style: dashed;
+
+    &:hover {
+      border-color: $button-primary-background;
+      color: $button-primary-background;
+    }
+  }
+}

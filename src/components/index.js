@@ -96,4 +96,4 @@ const install = function (Vue, opts = {}) {
   Object.keys(mine).forEach((key => {
     Vue.component(mine[key].name, mine[key]);
   }))
-}
+};
