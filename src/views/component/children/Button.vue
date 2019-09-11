@@ -15,7 +15,22 @@
         </mine-card>
         <Page :total="100"/>
         <div>
-            7897979789
+            <mine-input-number>
+
+            </mine-input-number>
+        </div>
+        <div>
+            <mine-dropdown>
+                <span>hover触发</span>
+                <mine-dropdown-menu slot="dropdown">
+                    <mine-dropdown-item>驴打滚</mine-dropdown-item>
+                    <mine-dropdown-item>炸酱面</mine-dropdown-item>
+                    <mine-dropdown-item>豆汁儿</mine-dropdown-item>
+                    <mine-dropdown-item>冰糖葫芦</mine-dropdown-item>
+                </mine-dropdown-menu>
+            </mine-dropdown>
+        </div>
+        <div>
             <mine-tabs value="">
                 <mine-tab-panel label="标签一标签一" name="tab01">
                     标签内容01
@@ -24,7 +39,7 @@
                     标签内容02
                 </mine-tab-panel>
                 <mine-tab-panel label="标签三" name="tab03">
-                    标签内容03
+                    标签内容033333
                 </mine-tab-panel>
             </mine-tabs>
         </div>
@@ -81,12 +96,28 @@
   import MineRate from '../../../components/rate/rate';
   import MineTabs from '../../../components/tabs/tabs';
   import MineTabPanel from '../../../components/tabs/panel';
-
+  import MineDropdown from '../../../components/dropdown/dropdown';
+  import MineDropdownMenu from '../../../components/dropdown/dropdown-menu';
+  import MineDropdownItem from '../../../components/dropdown/dropdown-item';
+  import MineSelect from '../../../components/select/select';
+  import MineInputNumber from '../../../components/input-number/input-number';
 
   export default {
     name: "Button",
     components: {
-      MineButton, MineCard, MineButtonGroup, MineCollapse, MineCollapseItem, MineRate, MineTabPanel, MineTabs
+      MineButton,
+      MineCard,
+      MineButtonGroup,
+      MineCollapse,
+      MineCollapseItem,
+      MineRate,
+      MineTabPanel,
+      MineTabs,
+      MineDropdown,
+      MineDropdownMenu,
+      MineDropdownItem,
+      MineSelect,
+      MineInputNumber
     },
     methods: {
       handlerChange(value) {

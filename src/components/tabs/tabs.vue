@@ -9,13 +9,13 @@
                     class="mine-tabs-tab"
                     v-for="nav in tabNavList"
                     :class="nav.name===activeKey?'mine-tabs-tab-active':''"
-                    @click="test(nav)"
+                    @click="toggle(nav)"
             >
                 {{nav.label}}
             </div>
         </div>
         <!--内容区域-->
-        <div class="mine-tab-content">
+        <div class="mine-tab-content" ref="content">
             <slot></slot>
         </div>
     </div>
@@ -76,6 +76,7 @@
           }
         });
         this.updateBar();
+        this.updateContent();
       },
       //更新激活面板的滚动条的宽度及距离
       updateBar() {
@@ -101,16 +102,31 @@
           }
         })
       },
-      test(bar) {
+      //更新面板内容
+      updateContent() {
+        //获取面板所有mine-tabs-panel元素和获取mine-tabs-tab一样
+        const panelElements = this.$refs.content.querySelectorAll('.mine-tabs-panel');
+        const index = this.getTabIndex(this.activeKey);
+        panelElements.forEach((el, i) => {
+          if (i === index) {
+            el.style.display = 'block'
+          }else {
+            el.style.display = 'none'
+          }
+        });
+        console.log(panelElements, 'panelElements');
+      },
+      toggle(bar) {
         // const index = this.getTabIndex(bar.name);
         this.activeKey = bar.name;
         // console.log(bar, 'bar---------')
       }
     },
     watch: {
-      activeKey(newVal,oldVal) {
+      activeKey(newVal, oldVal) {
         this.updateBar();
-        console.log(newVal,oldVal,'watch')
+        this.updateContent();
+        console.log(newVal, oldVal, 'watch')
       }
     }
   }
@@ -153,6 +169,12 @@
                     color: #00c8d7;
                 }
             }
+        }
+
+        .mine-tab-content {
+            display: flex;
+            flex-direction: row;
+            transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
         }
     }
 </style>
