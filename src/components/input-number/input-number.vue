@@ -10,7 +10,12 @@
             </a>
         </div>
         <div class="mine-input-number-input-wrap">
-            <input class="mine-input-number-input" type="text">
+            <input
+                    class="mine-input-number-input"
+                    type="text"
+                    :disabled="disabled"
+                    @input="onchange"
+            >
         </div>
     </div>
 </template>
@@ -35,6 +40,29 @@
       disabled: {
         type: Boolean,
         default: false
+      }
+    },
+    methods: {
+      onchange(event) {
+        console.log(event.type);
+        let val = event.target.value.trim();
+        const isEmptyString = val.length === 0;
+        if(isEmptyString){
+          this.setValue(null);
+          return;
+        }
+        if (event.type === 'input' && val.match(/^\-?\.?$|\.$/)) return; //
+        val = Number(val);
+        if (!isNaN(val)) {
+          this.currentValue = val;
+          this.setValue(val);
+        } else {
+          event.target.value = this.currentValue;
+        }
+        console.log(val,'val')
+      },
+      setValue(){
+
       }
     }
   }
@@ -62,10 +90,20 @@
         border-radius: 4px;
         overflow: hidden;
         cursor: default;
-        .mine-input-number-input-wrap{
+
+        &:hover {
+            border-color: #00c8d7;
+
+            .mine-input-number-handler-wrap {
+                opacity: 1;
+            }
+        }
+
+        .mine-input-number-input-wrap {
             overflow: hidden;
             height: 32px;
-            .mine-input-number-input{
+
+            .mine-input-number-input {
                 width: 100%;
                 height: 32px;
                 line-height: 32px;
@@ -77,8 +115,10 @@
                 border: 0;
                 border-radius: 4px;
                 transition: all .2s linear;
+
             }
         }
+
         .mine-input-number-handler-wrap {
             position: absolute;
             top: 0;
@@ -88,7 +128,7 @@
             background: #fff;
             border-left: 1px solid #d9d9d9;
             border-radius: 0 4px 4px 0;
-            opacity: 1;
+            opacity: 0;
             transition: opacity .24s linear .1s;
 
             .mine-input-number-handler {
@@ -117,6 +157,10 @@
                 position: absolute;
                 right: 5px;
                 transition: all .2s linear;
+
+                &:hover {
+                    color: #00c8d7;
+                }
             }
 
             .mine-input-number-up-inner {
@@ -129,6 +173,10 @@
                 position: absolute;
                 right: 5px;
                 transition: all .2s linear;
+
+                &:hover {
+                    color: #00c8d7;
+                }
             }
         }
     }
