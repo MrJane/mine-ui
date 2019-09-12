@@ -11,14 +11,14 @@
     },
     computed: {
       classes() {
-        return ['mine-icon', this.type,this.custom]
+        return ['mine-icon', this.type, this.custom]
       },
       styles() {
         let style = {}
         if (this.size) {
           style['font-size'] = `${this.size}px`;
         }
-        if (this.color){
+        if (this.color) {
           style.color = this.color;
         }
         return style
@@ -34,26 +34,28 @@
       //自定义图标
       custom: {
         type: String,
-        default:''
+        default: ''
       },
       // value:{
       // type:String}
     },
-    mounted(){
-    console.log(this.value,'kkkkkkkkkk')
+    mounted() {
+      console.log(this.value, 'kkkkkkkkkk')
     },
-    methods:{
-      handleClick(event){
-        this.$emit('click',event)
+    methods: {
+      handleClick(event) {
+        this.$emit('click', event)
       }
     },
-    watch:{
-    value(){
-    console.log(this.value,'lllllllllllllllll')}}
+    watch: {
+      value() {
+        console.log(this.value, 'lllllllllllllllll')
+      }
+    }
   }
 </script>
 
-<style lang="scss" >
+<style lang="scss">
     .mine-icon {
         display: inline-block;
         font-family: MineIcons;
