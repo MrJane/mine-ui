@@ -151,8 +151,7 @@
         <!--        <input type="radio">-->
         <hr>
         <div class="item-test">
-            <mine-swiper>
-                <div class="demo-swiper">0</div>
+            <mine-swiper loop>
                 <mine-swiper-item>
                     <div class="demo-swiper">1</div>
                 </mine-swiper-item>
@@ -181,7 +180,7 @@
             </mine-carousel>
         </div>
         <hr>
-        <div style="margin-left: 250px">
+        <div style="margin-left: 250px;width: 600px">
             <p v-for="num in 20">测试</p>
             <!--            <p>测试</p>-->
             <!--            <p>测试</p>-->

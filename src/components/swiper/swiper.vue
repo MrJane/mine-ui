@@ -39,7 +39,7 @@
       arrow: {
         type: String,
         default: 'hover',
-        validator(value) {
+        validator (value) {
           return oneOf(value, ['hover', 'always', 'never']);
         }
       },
@@ -62,7 +62,7 @@
       dots: {
         type: String,
         default: 'inside',
-        validator(value) {
+        validator (value) {
           return oneOf(value, ['inside', 'outside', 'none']);
         }
       },
@@ -73,7 +73,7 @@
       trigger: {
         type: String,
         default: 'click',
-        validator(value) {
+        validator (value) {
           return oneOf(value, ['click', 'hover']);
         }
       },
@@ -84,12 +84,12 @@
       height: {
         type: [String, Number],
         default: 'auto',
-        validator(value) {
+        validator (value) {
           return value === 'auto' || Object.prototype.toString.call(value) === '[object Number]';
         }
       }
     },
-    data() {
+    data () {
       return {
         prefixCls: prefixCls,
         listWidth: 0,
@@ -108,19 +108,19 @@
       };
     },
     computed: {
-      classes() {
+      classes () {
         return [
           `${prefixCls}`
         ];
       },
-      trackStyles() {
+      trackStyles () {
         return {
           width: `${this.trackWidth}px`,
           transform: `translate3d(${-this.trackOffset}px, 0px, 0px)`,
           transition: `transform 500ms ${this.easing}`
         };
       },
-      copyTrackStyles() {
+      copyTrackStyles () {
         return {
           width: `${this.trackWidth}px`,
           transform: `translate3d(${-this.trackCopyOffset}px, 0px, 0px)`,
@@ -129,13 +129,13 @@
           top: 0
         };
       },
-      arrowClasses() {
+      arrowClasses () {
         return [
           `${prefixCls}-arrow`,
           `${prefixCls}-arrow-${this.arrow}`
         ];
       },
-      dotsClasses() {
+      dotsClasses () {
         return [
           `${prefixCls}-dots`,
           `${prefixCls}-dots-${this.dots}`
@@ -144,7 +144,7 @@
     },
     methods: {
       // find option component
-      findChild(cb) {
+      findChild (cb) {
         const find = function (child) {
           const name = child.$options.componentName;
           if (name) {
@@ -152,7 +152,7 @@
           } else if (child.$children.length) {
 
             child.$children.forEach((innerChild) => {
-              console.log(child,'child>>>>>>>>>>>>>>>')
+              console.log(child, 'child>>>>>>>>>>>>>>>')
               find(innerChild, cb);
             });
           }
@@ -169,12 +169,12 @@
         }
       },
       // copy trackDom
-      initCopyTrackDom() {
+      initCopyTrackDom () {
         this.$nextTick(() => {
           this.$refs.copyTrack.innerHTML = this.$refs.originTrack.innerHTML;
         });
       },
-      updateSlides(init) {
+      updateSlides (init) {
         let slides = [];
         let index = 1;
 
@@ -190,19 +190,19 @@
         });
 
         this.slides = slides;
-        console.log(this.slideInstances,'slideInstances>>>>>>>>>>>>>>>>')
+        console.log(this.slideInstances, 'slideInstances>>>>>>>>>>>>>>>>')
         this.updatePos();
       },
-      updatePos() {
+      updatePos () {
         this.findChild((child) => {
           child.width = this.listWidth;
           child.height = typeof this.height === 'number' ? `${this.height}px` : this.height;
         });
-        console.log(this.listWidth,'listWidth')
+        console.log(this.listWidth, 'listWidth')
         this.trackWidth = (this.slides.length || 0) * this.listWidth;
       },
       // use when slot changed
-      slotChange() {
+      slotChange () {
         this.$nextTick(() => {
           this.slides = [];
           this.slideInstances = [];
@@ -212,19 +212,19 @@
           this.updateOffset();
         });
       },
-      handleResize() {
+      handleResize () {
         this.listWidth = parseInt(getStyle(this.$el, 'width'));
         this.updatePos();
         this.updateOffset();
       },
-      updateTrackPos(index) {
+      updateTrackPos (index) {
         if (this.showCopyTrack) {
           this.trackIndex = index;
         } else {
           this.copyTrackIndex = index;
         }
       },
-      updateTrackIndex(index) {
+      updateTrackIndex (index) {
         if (this.showCopyTrack) {
           this.copyTrackIndex = index;
         } else {
@@ -232,10 +232,12 @@
         }
         this.currentIndex = index;
       },
-      add(offset) {
+      add (offset) {
         // 获取单个轨道的图片数
         let slidesLen = this.slides.length;
         // 如果是无缝滚动，需要初始化双轨道位置
+        console.log(this.copyTrackIndex, 'dddd');
+        // debugger;
         if (this.loop) {
           if (offset > 0) {
             // 初始化左滑轨道位置
@@ -246,12 +248,15 @@
           }
           this.updateTrackPos(this.hideTrackPos);
         }
+        console.log(this.copyTrackIndex, '更新前copyTrackIndex');
+        console.log(this.trackIndex,'更新前trackIndex');
         // 获取当前展示图片的索引值
         const oldIndex = this.showCopyTrack ? this.copyTrackIndex : this.trackIndex;
         let index = oldIndex + offset;
         while (index < 0) index += slidesLen;
         if (((offset > 0 && index === slidesLen) || (offset < 0 && index === slidesLen - 1)) && this.loop) {
           // 极限值（左滑：当前索引为总图片张数， 右滑：当前索引为总图片张数 - 1）切换轨道
+
           this.showCopyTrack = !this.showCopyTrack;
           this.trackIndex += offset;
           this.copyTrackIndex += offset;
@@ -259,15 +264,17 @@
           if (!this.loop) index = index % this.slides.length;
           this.updateTrackIndex(index);
         }
+        console.log(this.copyTrackIndex, '更新后copyTrackIndex');
+        console.log(this.trackIndex, '更新后trackIndex');
         this.currentIndex = index === this.slides.length ? 0 : index;
         this.$emit('on-change', oldIndex, this.currentIndex);
         this.$emit('input', this.currentIndex);
       },
-      arrowEvent(offset) {
+      arrowEvent (offset) {
         this.setAutoplay();
         this.add(offset);
       },
-      dotsEvent(event, n) {
+      dotsEvent (event, n) {
         let curIndex = this.showCopyTrack ? this.copyTrackIndex : this.trackIndex;
         if (event === this.trigger && curIndex !== n) {
           this.updateTrackIndex(n);
@@ -276,7 +283,7 @@
           this.setAutoplay();
         }
       },
-      setAutoplay() {
+      setAutoplay () {
         window.clearInterval(this.timer);
         if (this.autoplay) {
           this.timer = window.setInterval(() => {
@@ -284,7 +291,7 @@
           }, this.autoplaySpeed);
         }
       },
-      updateOffset() {
+      updateOffset () {
         this.$nextTick(() => {
           /* hack: revise copyTrack offset (1px) */
           let ofs = this.copyTrackIndex > 0 ? -1 : 1;
@@ -294,36 +301,36 @@
       }
     },
     watch: {
-      autoplay() {
+      autoplay () {
         this.setAutoplay();
       },
-      autoplaySpeed() {
+      autoplaySpeed () {
         this.setAutoplay();
       },
-      trackIndex() {
+      trackIndex () {
         this.updateOffset();
       },
-      copyTrackIndex() {
+      copyTrackIndex () {
         this.updateOffset();
       },
-      height() {
+      height () {
         this.updatePos();
       },
-      value(val) {
+      value (val) {
 //                this.currentIndex = val;
 //                this.trackIndex = val;
         this.updateTrackIndex(val);
         this.setAutoplay();
       }
     },
-    mounted() {
+    mounted () {
       this.updateSlides(true);
       this.handleResize();
       this.setAutoplay();
 //            window.addEventListener('resize', this.handleResize, false);
       on(window, 'resize', this.handleResize);
     },
-    beforeDestroy() {
+    beforeDestroy () {
 //            window.removeEventListener('resize', this.handleResize, false);
       off(window, 'resize', this.handleResize);
     }
